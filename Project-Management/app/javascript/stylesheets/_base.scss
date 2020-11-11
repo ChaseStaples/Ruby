@@ -1,10 +1,25 @@
 body {
-    background-color: rgb(88, 88, 88);
+    background-color: rgb(221, 221, 221);
 }
 
+.card {
+    border-color: lightskyblue;
+    border-width: 3px;
+}
 
 .project-card{
 
-    transition: background-color 0.5s ease;
-    &:hover{ background-color: #c4c4c4}
+    transition: background-color 0.3s ease;
+    border-color: black;
+    border-width: 1.5px;
+    &:hover{ 
+        background-color: #ececec; 
+        border-color: lightskyblue;
+        border-width: 3px;
+    }
+}
+
+.task-card{
+    border-color: black;
+    border-width: 1.5px;
 }
