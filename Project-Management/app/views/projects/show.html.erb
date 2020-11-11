@@ -4,8 +4,8 @@
     <h2 class="card-title d-flex justify-content-between mb-4">
       <span><%= @project.name %></span>
       <div>
-        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-warning' %>
-        <%= link_to 'Delete', @project, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-light' %>
+        <%= link_to 'Delete', @project, method: :delete, class: 'btn btn-secondary', data: { confirm: 'Chase are you sure?' } %>
       </div>
     </h2>
 
@@ -25,6 +25,8 @@
           </div>
         <% end %>
       
+        <%= f.hidden_field :status, value: 'Not Started' %>
+
         <div class="input-group">
           <%= f.text_field :name, class: 'form-control', placeholder: 'Enter task..'%>
               <div class="input-group-append">
@@ -39,18 +41,21 @@
 
     <% @project.tasks.each do |task| %>
       <% if task.persisted? %>
-        <div class="card">
+        <div class="card mb-3">
           <div class="card-body">
-            <span class="badge badge-primary"><%= task.status %></span>
 
-            <h5 class="card-title d-flex justify-content-between mb-4">
-              <span><%= task.name %></span>
+            <div class="d-flex justify-content-between">
+              <span class="badge badge-<%= task.badge_color %> mb-3"><%= task.status %></span>
               <div>
-                <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-warning' %>
-                <%= link_to 'Delete', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-              </div>
-            </h5>
+                <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-light btn-sm' %>
+                <%= link_to 'Delete', [task.project, task], method: :delete, data: { confirm: 'Chase are you sure?' }, class: 'btn btn-secondary btn-sm' %>
+              </div>            
+            </div>
+            
 
+            <h5 class="card-title">
+              <span><%= task.name %></span>
+            </h5>
             <p><%= task.description %></p>
           </div>
         </div>
